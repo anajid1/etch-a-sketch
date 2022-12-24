@@ -19,3 +19,10 @@ for (let i = 0; i < 100; i++) {
 
   grid.appendChild(row);
 }
+
+function edit() {
+  let gridSize = prompt("Size of grid?");
+  if (!Number(gridSize) || gridSize < 1 || gridSize > 100) {
+    alert("Invalid value! Using default grid size of 16.");
+  }
+}
