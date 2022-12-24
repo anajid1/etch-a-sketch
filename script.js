@@ -25,7 +25,7 @@ function createGrid() {
 
 function edit() {
   userInput = prompt("Size of grid?");
-  if (!Number(userInput) || userInput < 1 || userInput > 100) {
+  if (!Number(userInput) || userInput < 1 || userInput > 250) {
     alert("Invalid value! Using default grid size of 50.");
     recreateGrid(50);
   } else {
@@ -42,5 +42,9 @@ function recreateGrid(newSize) {
 
     createGrid();
 }
+
+document.body.addEventListener('dblclick', (event) => {
+  recreateGrid(gridSize);
+});
 
 createGrid();
