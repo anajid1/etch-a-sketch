@@ -27,20 +27,20 @@ function edit() {
   userInput = prompt("Size of grid?");
   if (!Number(userInput) || userInput < 1 || userInput > 100) {
     alert("Invalid value! Using default grid size of 50.");
-    gridSize = 50;
-    resetGrid();
-    createGrid();
+    recreateGrid(50);
   } else {
-    resetGrid();
-    gridSize = userInput;
-    createGrid();
+    recreateGrid(userInput);
   }
 }
 
-function resetGrid() {
+function recreateGrid(newSize) {
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild);
     }
+
+    gridSize = newSize;
+
+    createGrid();
 }
 
 createGrid();
