@@ -1,12 +1,14 @@
 
 const grid = document.querySelector('.grid');
 
-function createGrid(size=50) {
-  for (let i = 0; i < size; i++) {
+let gridSize = 50;
+
+function createGrid() {
+  for (let i = 0; i < gridSize; i++) {
     const row = document.createElement('div');
     row.classList.add('row');
 
-    for (let j = 0; j < size; j++) {
+    for (let j = 0; j < gridSize; j++) {
       const box = document.createElement('div');
       box.classList.add('box');
 
@@ -22,12 +24,13 @@ function createGrid(size=50) {
 }
 
 function edit() {
-  let gridSize = prompt("Size of grid?");
-  if (!Number(gridSize) || gridSize < 1 || gridSize > 100) {
+  userInput = prompt("Size of grid?");
+  if (!Number(userInput) || userInput < 1 || userInput > 100) {
     alert("Invalid value! Using default grid size of 50.");
   } else {
     resetGrid();
-    createGrid(gridSize);
+    gridSize = userInput;
+    createGrid();
   }
 }
 
