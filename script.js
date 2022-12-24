@@ -27,6 +27,9 @@ function edit() {
   userInput = prompt("Size of grid?");
   if (!Number(userInput) || userInput < 1 || userInput > 100) {
     alert("Invalid value! Using default grid size of 50.");
+    gridSize = 50;
+    resetGrid();
+    createGrid();
   } else {
     resetGrid();
     gridSize = userInput;
