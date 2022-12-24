@@ -1,28 +1,40 @@
-console.log("Hello World");
 
 const grid = document.querySelector('.grid');
 
-for (let i = 0; i < 100; i++) {
-  const row = document.createElement('div');
-  row.classList.add('row');
+function createGrid(size=50) {
+  for (let i = 0; i < size; i++) {
+    const row = document.createElement('div');
+    row.classList.add('row');
 
-  for (let j = 0; j < 100; j++) {
-    const box = document.createElement('div');
-    box.classList.add('box');
+    for (let j = 0; j < size; j++) {
+      const box = document.createElement('div');
+      box.classList.add('box');
 
-    box.addEventListener('mouseover', function (e) {
-      e.target.style.backgroundColor = 'black';
-    });
+      box.addEventListener('mouseover', function (e) {
+        e.target.style.backgroundColor = 'black';
+      });
 
-    row.appendChild(box);
+      row.appendChild(box);
+    }
+
+    grid.appendChild(row);
   }
-
-  grid.appendChild(row);
 }
 
 function edit() {
   let gridSize = prompt("Size of grid?");
   if (!Number(gridSize) || gridSize < 1 || gridSize > 100) {
-    alert("Invalid value! Using default grid size of 16.");
+    alert("Invalid value! Using default grid size of 50.");
+  } else {
+    resetGrid();
+    createGrid(gridSize);
   }
 }
+
+function resetGrid() {
+    while (grid.firstChild) {
+        grid.removeChild(grid.firstChild);
+    }
+}
+
+createGrid();
